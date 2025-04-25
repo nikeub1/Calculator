@@ -1,0 +1,27 @@
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<h2>Simple Calculator</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="text" name="expression" placeholder="e.g. 5 + 3 * 2" style="width: 300px;" />
+    <button type="submit">Calculate</button>
+}
+
+@if (ViewBag.Result != null)
+{
+    <h3>Result: @ViewBag.Result</h3>
+}
+
+<h4>History</h4>
+@if (ViewBag.History != null)
+{
+    <ul>
+        @foreach (var item in ViewBag.History)
+        {
+            <li>@item.Timestamp: @item.Expression = @item.Result</li>
+        }
+    </ul>
+}
